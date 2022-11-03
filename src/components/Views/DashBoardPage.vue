@@ -2,10 +2,10 @@
     <a-layout style="min-height: 100vh;">
         <Slider></Slider>
 
-        <a-layout style="margin-left: 30px; margin-right: 30px;">
+        <a-layout class="page">
             <a-layout-header style="padding: 0;"><Header></Header></a-layout-header>
             <a-layout-content><Contentt></Contentt></a-layout-content>
-            <a-layout-footer><Footer></Footer></a-layout-footer>
+            <a-layout-footer style="padding: 0;"><Footer></Footer></a-layout-footer>
         </a-layout>
     </a-layout>
 </template>
@@ -21,5 +21,9 @@ import Footer from '../Modal/DashBoardPage/Footer/Footer.vue';
 <style scoped>
 .ant-layout-header {
     background-color: #f0f2f5;
+}
+.page{
+    margin-left: 19%;
+    margin-right: 1%;
 }
 </style>

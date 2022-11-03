@@ -66,14 +66,19 @@ import {
     BellOutlined,
     UserOutlined
 } from "@ant-design/icons-vue";
+import router from "../../../Router/router";
 
 function handleLogout() {
-    alert("Đã đăng xuất")
     window.localStorage.removeItem('isLoggedIn');
+    router.push('/login');
 }
 </script>
 
 <style scoped>
+.menu-item:hover{
+    cursor: pointer;
+    background-color: #9c27b0;
+}
 .header {
     display: flex;
     justify-content: space-between;

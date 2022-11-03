@@ -50,7 +50,7 @@
 
                 <div class="title-card-header">
                     <span>Revenue</span>
-                    <span><i class="fas fa-dollar-sign"></i>34,245</span>
+                    <span>$34,245</span>
                 </div>
             </div>
 

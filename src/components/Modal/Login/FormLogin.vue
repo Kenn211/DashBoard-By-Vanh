@@ -30,24 +30,24 @@
                                     <div class="icon-input">
                                         <i class="fas fa-user"></i>
                                     </div>
-                                    <input type="text" v-model="formLogin.name" class="input__login" placeholder="First Name..." />
-                                   
+                                    <input type="text" v-model="formLogin.name" class="input__login"
+                                        placeholder="First Name..." />
+
                                 </div>
 
                                 <div class="input-text">
                                     <div class="icon-input">
                                         <i class="fas fa-envelope"></i>
                                     </div>
-                                    <input type="gmail" v-model="formLogin.email" class="input__login" placeholder="Email..." />
-                                   
+                                    <input type="gmail" v-model="formLogin.email" class="input__login"
+                                        placeholder="Email..." />
                                 </div>
 
                                 <div class="input-text">
                                     <div class="icon-input">
                                         <i class="fas fa-lock"></i>
                                     </div>
-                                    <input type="password" v-model="formLogin.password" class="input__login" placeholder="Password..." />
-                                   
+                                    <a-input-password :bordered="false" class="input__login" v-model:value="formLogin.password" placeholder="Password" />
                                 </div>
                             </div>
                         </div>
@@ -67,32 +67,41 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { Login } from '../../Interfaces/interfaces';
+import { User } from '../../Interfaces/interfaces';
 import router from '../../Router/router';
 
-const dataLogin = reactive<Login>({
+const dataLogin = reactive<User>({
     id: 1,
-    name: 'Vanh',
-    email: 'vanh@gmail.com',
-    password: 'vanh'
+    name: 'a',
+    email: 'a',
+    password: '1'
 });
 
-let formLogin = reactive<Login>({
+const formLogin = reactive<User>({
     id: 1,
     name: '',
     email: '',
     password: ''
-})
+});
 
-function handleLogin(){
-    if((formLogin.name == dataLogin.name) && (formLogin.email == dataLogin.email) && (formLogin.password == dataLogin.password)) {
-        alert('Đăng nhập thành công');
+// (async () => {
+//     try {
+//         const res = await LoginRepositories.getDataLogin();
+//         dataLogin.value = res.data;
+//         console.log(dataLogin.value);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })();
+
+function handleLogin() {
+    if ((formLogin.name === dataLogin.name) && (formLogin.email === dataLogin.email) && (formLogin.password === dataLogin.password)) {
         window.localStorage.setItem('isLoggedIn', 'true');
         router.push('/');
     }
-    else if((formLogin.name == '' || null ) || (formLogin.email == '' || null) || (formLogin.password == '' || null)){
+    else if ((formLogin.name == '' || null) || (formLogin.email == '' || null) || (formLogin.password == '' || null)) {
         alert('Nhập vào bạn ơi...');
-    }else if((formLogin.name !== dataLogin.name) || (formLogin.email !== dataLogin.email) || (formLogin.password !== dataLogin.password)){
+    } else if ((formLogin.name !== dataLogin.name) || (formLogin.email !== dataLogin.email) || (formLogin.password !== dataLogin.password)) {
         alert('Sai bạn ơi');
         console.log(formLogin);
     }
@@ -125,7 +134,6 @@ function handleLogin(){
 form {
     background-color: #fff;
     border-radius: 10px;
-    
 }
 
 .card-header {
@@ -187,14 +195,17 @@ form {
     border-radius: 0;
     cursor: pointer;
     width: 100%;
+    padding: 0;
 }
 
 .input__login:focus {
+    outline: none;
+    border: none;
     transition: 0.2s all ease linear;
     border-bottom: #9c27b0 1px solid;
 }
 
-.input-text .line{
+.input-text .line {
     border-bottom: #9c27b0 2px solid;
 }
 

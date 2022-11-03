@@ -22,3 +22,12 @@ textarea:focus, input:focus{
 hr {
   margin: 0;
 }
+
+body::-webkit-scrollbar{
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb{
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}

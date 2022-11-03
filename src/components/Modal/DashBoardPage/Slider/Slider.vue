@@ -1,5 +1,5 @@
 <template>
-    <a-layout-sider width="17%" v-model:collapsed="collapsed" collapsible>
+    <a-layout-sider class="slider" width="17%" v-model:collapsed="collapsed" collapsible>
         <div class="logo"></div>
         <div style="
             height: 70px;
@@ -125,9 +125,11 @@
             </a-menu-item>
         </a-menu>
     </a-layout-sider>
+    <SettingSlider></SettingSlider>
 </template>
 
 <script setup lang="ts">
+import SettingSlider from "./SettingSlider.vue";
 import {
     DesktopOutlined,
     UserOutlined,
@@ -145,6 +147,21 @@ const selectedKeys = ref<string[]>(["1"]);
 <style>
 .site-layout .site-layout-background {
     background: #fff;
+}
+
+.ant-layout .ant-layout-sider{
+    position: fixed;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.slider::-webkit-scrollbar{
+    width: 5px;
+}
+
+.slider::-webkit-scrollbar-thumb{
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }
 
 .ant-layout-sider {

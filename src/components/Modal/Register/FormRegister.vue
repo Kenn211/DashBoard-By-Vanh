@@ -76,10 +76,13 @@
 
                                     <div class="input-text">
                                         <div class="input-check">
-                                            <input v-model="formRegister.terms" type="checkbox">
+                                            <a-checkbox v-model:checked="formRegister.terms"></a-checkbox>
                                             <span class="check"></span>
                                         </div>
-                                        <span>I agree to the&nbsp;</span><a href="">teams and conditions</a>
+                                        <div style="margin-top: 5px;">
+                                            <span>I agree to the&nbsp;</span>
+                                            <a href="">teams and conditions</a>
+                                        </div>
                                     </div>
                                 </form>
 
@@ -97,11 +100,10 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { Register } from '../../Interfaces/interfaces'
+import { User } from '../../Interfaces/interfaces'
+const dataRegister = ref<User[]>([])
 
-const dataRegister = ref<Register[]>([])
-
-const formRegister = reactive<Register>({
+const formRegister = reactive<User>({
     id: dataRegister.value.length + 1,
     name: '',
     email: '',
@@ -122,7 +124,12 @@ const success = reactive({
 
 function onSubmit(){
     if(formRegister.name !== '' && formRegister.email !== '' && formRegister.password !== '' && formRegister.terms == true){
-        dataRegister.value.push(formRegister);
+        dataRegister.value.push(
+            {
+                ...formRegister,
+                id: dataRegister.value.length + 1
+            }
+        );
         console.log(dataRegister.value)
     }else if(formRegister.name == '' || formRegister.email == '' || formRegister.password == '' || formRegister.terms == false){
         alert("Nhập vào bạn eei...");

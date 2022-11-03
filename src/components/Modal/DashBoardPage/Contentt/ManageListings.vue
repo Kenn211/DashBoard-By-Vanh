@@ -25,7 +25,7 @@
                         <template #title>
                             <span>Remove</span>
                         </template>
-                        <i class="fas fa-window-close icon-change"></i>
+                        <i @click="handleDelete(item.id)" class="fas fa-window-close icon-change"></i>
                     </a-tooltip>
                 </div>
 
@@ -80,6 +80,10 @@ const dataProduct = ref<Product[]>([
         price: 459
     },
 ])
+
+function handleDelete(idProduct: number) {
+    dataProduct.value = dataProduct.value.filter((item) => idProduct != item.id)
+}
 </script>
 
 <style scoped>
